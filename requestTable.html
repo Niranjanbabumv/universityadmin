@@ -1,0 +1,63 @@
+<html ng-app = "myModule">
+<head>
+	<script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="app.js"></script>
+	<style>
+			.container {
+			  display: flex;
+			}
+			.container > div {
+			  flex: 1; /*grow*/
+			}
+			.mainBox {
+			  position: absolute;
+			  left: 200px;
+			  width: 900px;
+			  height: 600px;
+			  border: 1px solid black;
+			}
+			.insideBox {
+			  position: absolute;
+			  left: 40px;
+			}
+			table{
+			  border-collapse: collapse;
+			}
+			th, td {
+				text-align: center;
+				padding: 8px;
+			}
+			tr:nth-child(even) {background-color: lightgrey;}
+	</style>
+</head>
+<body  ng-controller = "myControllerRequest">
+	<div class= "mainbox">
+				<p style="text-align: center;font-family: cursive;font-style: normal;">Illinios State University</p><input type="submit" class="submit" value="Login" id = "submit" style="float: right;">
+				<p style="text-align: center;font-family: cursive;font-style: normal;">Address : 100 N University ST, Normal, IL 61761, USA  Telephone: 815-226-4901</p>
+				<hr />
+				<p style="font-family: cursive;font-style: normal;font-size: x-large;padding-left:40px;">Applications for Admission</p>
+		<div class = "insideBox">
+		<table style="width : 700px;">
+				<tr>
+					<th>Request ID</th>
+					<th>Request Date</th>
+					<th>Applicant Name</th>
+					<th>Applied For</th>
+					<th>Status</th>
+					<th>Digital Identity Verified</th>
+				<tr>
+				<tr ng-repeat = "x in requestTableData" ng-click="getApplicantData(x)">
+					<td><a href="#">{{x.doc._id}}</a></td>
+					<td>{{x.doc.requestDate}}</td>
+					<td>{{x.doc.applicantName}}</td>
+					<td>{{x.doc.appliedFor}}</td>
+					<td>{{x.doc.status}}</td>
+					<td>{{x.doc.digitalIdVerified}}</td>					
+				</tr>
+		<table>
+		</div>
+	</div>
+</body>
+</html>	
